@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Juros Simples</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px; /* Limitar largura para telas maiores */
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #333;
+            display: block;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .resultado {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
 
+        /* Responsividade para telas menores */
+        @media (max-width: 600px) {
+            .container {
+                width: 90%; /* Ajusta a largura para caber melhor em telas pequenas */
+            }
+            h1 {
+                font-size: 18px;
+            }
+            label {
+                font-size: 12px;
+            }
+            input {
+                font-size: 14px;
+            }
+            button {
+                font-size: 14px;
+            }
+            .resultado {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Calculadora de Juros</h1>
+    
+    <label for="principal">Valor Principal (R$):</label>
+    <input type="number" id="principal" placeholder="Exemplo: 1000" required>
+    
+    <label for="taxa">Taxa de Juros (%):</label>
+    <input type="number" id="taxa" placeholder="Exemplo: 5" required>
+    
+    <label for="tempo">Tempo (anos):</label>
+    <input type="number" id="tempo" placeholder="Exemplo: 2" required>
+    
+    <button onclick="calcularJuros()">Calcular Juros</button>
+    
+    <div class="resultado" id="resultado"></div>
+</div>
+
+<script>
+    function calcularJuros() {
+        var principal = parseFloat(document.getElementById("principal").value);
+        var taxa = parseFloat(document.getElementById("taxa").value);
+        var tempo = parseFloat(document.getElementById("tempo").value);
+
+        if (isNaN(principal) || isNaN(taxa) || isNaN(tempo)) {
+            alert("Por favor, preencha todos os campos corretamente.");
+            return;
+        }
+
+        var juros = (principal * taxa * tempo) / 100;
+        var total = principal + juros;
+
+        document.getElementById("resultado").innerHTML = `
+            <p>Juros: R$ ${juros.toFixed(2)}</p>
+            <p><strong>Valor Total: R$ ${total.toFixed(2)}</strong></p>
+        `;
+    }
+</script>
+
+</body>
+</html>
