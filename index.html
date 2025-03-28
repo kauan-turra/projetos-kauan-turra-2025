@@ -12,6 +12,7 @@
             background-color: #f4f7fa;
             color: #333;
         }
+
         .topmenu {
             background-color: #4c84af;
             overflow: hidden;
@@ -44,6 +45,7 @@
             font-weight: bold;
             margin-left: 20px;
         }
+
         section {
             padding: 50px 20px;
             text-align: center;
@@ -55,12 +57,14 @@
             color: #333;
             margin-bottom: 20px;
         }
+
         #about {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 30px;
             padding: 20px;
+            flex-wrap: wrap; /* Adiciona flexibilidade para dispositivos menores */
         }
 
         #about h2 {
@@ -82,6 +86,7 @@
             color: #555;
             font-size: 1.1rem;
         }
+
         .skill {
             background-color: #fff;
             padding: 20px;
@@ -103,6 +108,7 @@
             height: 60px;
             margin-bottom: 10px;
         }
+
         .project-card {
             background-color: #fff;
             padding: 20px;
@@ -125,6 +131,7 @@
             color: #555;
             line-height: 1.6;
         }
+
         .recommendation {
             background-color: #fff;
             padding: 20px;
@@ -142,6 +149,7 @@
             color: #555;
             line-height: 1.6;
         }
+
         #recommendation_form {
             width: 100%;
             max-width: 600px;
@@ -164,7 +172,7 @@
 
         #recommendation_form button {
             padding: 10px 20px;
-            background-color: #;
+            background-color: #4c84af;
             color: white;
             border: none;
             border-radius: 5px;
@@ -174,8 +182,9 @@
         }
 
         #recommendation_form button:hover {
-            background-color: #4c84af;
+            background-color: #3b70a1;
         }
+
         #popup {
             display: none;
             background-color: rgba(0, 0, 0, 0.5);
@@ -201,6 +210,45 @@
             font-size: 1.2rem;
             color: #333;
         }
+
+        /* Adicionando flexibilidade e responsividade */
+        @media (max-width: 768px) {
+            #about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+
+            .skill {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .project-card {
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topmenu {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .topmenu a {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            section {
+                padding: 30px 10px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -217,7 +265,7 @@
         </nav>
     </div>
     <section id="about">
-        <img src="imagens/homem.png" alt="Minha Foto" class="profile-img">
+        <img src="C:\Users\kauan\OneDrive\Pictures/homem.png" alt="Minha Foto" class="profile-img">
         <div>
             <h2>Sobre Mim</h2>
             <p>Oi, meu nome é Kauan Turra! Sou estudante de analise e desenvolvimento de sistemas e tenho um grande interesse em tecnologia e inovação. Estou explorando oportunidades na área de tecnologia e inovação, buscando expandir meus conhecimentos e habilidades em diversas áreas.</p>
@@ -226,19 +274,19 @@
     <section id="skills">
         <h2>Habilidades</h2>
         <div class="skill">
-            <img src="imagens/html.png" alt="HTML">"
+            <img src="C:\Users\kauan\OneDrive\Desktop\projeto_final\imagens/html.png" alt="HTML">
             <p>HTML</p>
         </div>
         <div class="skill">
-            <img src="imagens/css.png" alt="CSS">
+            <img src="C:\Users\kauan\OneDrive\Desktop\projeto_final\imagens/css.png" alt="CSS">
             <p>CSS</p>
         </div>
         <div class="skill">
-            <img src="imagens/java.png" alt="JavaScript">
+            <img src="C:\Users\kauan\OneDrive\Desktop\projeto_final\imagens/java.png" alt="JavaScript">
             <p>JavaScript</p>
         </div>
         <div class="skill">
-            <img src="imagens/phyton.jpg" alt="Python">
+            <img src="C:\Users\kauan\OneDrive\Desktop\projeto_final\imagens/python.png" alt="Python">
             <p>Python</p>
         </div>
     </section>
@@ -271,32 +319,11 @@
             <p>"Kauan tem uma grande capacidade de aprendizado e resolve problemas de maneira eficiente!"</p>
             <p>- Pedro Almeida</p>
         </div>
+    </section>
     <section id="recommendation_form">
         <h2>Envie uma Recomendação</h2>
         <textarea id="recommendation_text" placeholder="Digite sua recomendação aqui..."></textarea>
         <button onclick="addRecommendation()">Enviar</button>
     </section>
-    <div id="popup">
-        <div>
-            <p>Recomendação enviada com sucesso!</p>
-            <button onclick="document.getElementById('popup').style.display='none'">Fechar</button>
-        </div>
-    </div>
-
-    <script>
-        function addRecommendation() {
-            var recommendationText = document.getElementById('recommendation_text').value;
-
-            if (recommendationText.trim() !== "") {
-                var newRecommendation = document.createElement('div');
-                newRecommendation.classList.add('recommendation');
-                newRecommendation.innerHTML = `<p>"${recommendationText}"</p><p>- Novo Usuário</p>`;
-                document.getElementById('recommendations').appendChild(newRecommendation);
-                document.getElementById('popup').style.display = 'flex';
-                document.getElementById('recommendation_text').value = ''; // Limpar campo
-            }
-        }
-    </script>
-
 </body>
 </html>
