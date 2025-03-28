@@ -20,7 +20,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            font-size: 14px; 
+            font-size: 14px;
         }
 
         .topmenu a {
@@ -64,7 +64,7 @@
             justify-content: center;
             gap: 30px;
             padding: 20px;
-            flex-wrap: wrap; /* Adiciona flexibilidade para dispositivos menores */
+            flex-wrap: wrap;
         }
 
         #about h2 {
@@ -232,9 +232,7 @@
                 width: 100%;
                 margin: 10px 0;
             }
-        }
 
-        @media (max-width: 480px) {
             .topmenu {
                 flex-direction: column;
                 text-align: center;
@@ -247,6 +245,17 @@
 
             section {
                 padding: 30px 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topmenu a {
+                padding: 12px 15px;
+                font-size: 14px;
+            }
+
+            section {
+                padding: 20px 10px;
             }
         }
     </style>
@@ -264,6 +273,7 @@
             <a href="#recommendations">Recomendações</a>
         </nav>
     </div>
+
     <section id="about">
         <img src="imagens/homem.png" alt="Minha Foto" class="profile-img">
         <div>
@@ -271,6 +281,7 @@
             <p>Oi, meu nome é Kauan Turra! Sou estudante de analise e desenvolvimento de sistemas e tenho um grande interesse em tecnologia e inovação. Estou explorando oportunidades na área de tecnologia e inovação, buscando expandir meus conhecimentos e habilidades em diversas áreas.</p>
         </div>
     </section>
+
     <section id="skills">
         <h2>Habilidades</h2>
         <div class="skill">
@@ -290,6 +301,7 @@
             <p>Python</p>
         </div>
     </section>
+
     <section id="projects">
         <h2>Projetos</h2>
         <div class="project-card">
@@ -309,25 +321,42 @@
             <p>Aplicativo simples para gerenciamento de tarefas diárias, desenvolvido com HTML, CSS e JavaScript.</p>
         </div>
     </section>
+
     <section id="recommendations">
         <h2>Recomendações</h2>
-        <div class="recommendation">
-            <p>"Kauan é extremamente dedicado e sempre busca aprender mais em tudo o que faz. Recomendo fortemente!"</p>
-            <p>- João Silva</p>
+        <div id="recommendationsList">
+            <div class="recommendation">
+                <p>"Kauan é extremamente dedicado e sempre busca aprender mais em tudo o que faz. Recomendo fortemente!"</p>
+                <p>- João Silva</p>
+            </div>
+            <div class="recommendation">
+                <p>"Sempre muito proativo e com ótimas ideias! Um excelente colaborador!"</p>
+                <p>- Maria Oliveira</p>
+            </div>
+            <div class="recommendation">
+                <p>"Kauan tem uma grande capacidade de aprendizado e resolve problemas de maneira eficiente!"</p>
+                <p>- Pedro Almeida</p>
+            </div>
         </div>
-        <div class="recommendation">
-            <p>"Sempre muito proativo e com ótimas ideias! Um excelente colaborador!"</p>
-            <p>- Maria Oliveira</p>
-        </div>
-        <div class="recommendation">
-            <p>"Kauan tem uma grande capacidade de aprendizado e resolve problemas de maneira eficiente!"</p>
-            <p>- Pedro Almeida</p>
+
+        <div id="recommendation_form">
+            <h2>Envie uma Recomendação</h2>
+            <textarea id="recommendation_text" placeholder="Digite sua recomendação aqui..."></textarea>
+            <button onclick="addRecommendation()">Enviar</button>
         </div>
     </section>
-    <section id="recommendation_form">
-        <h2>Envie uma Recomendação</h2>
-        <textarea id="recommendation_text" placeholder="Digite sua recomendação aqui..."></textarea>
-        <button onclick="addRecommendation()">Enviar</button>
-    </section>
+
+    <script>
+        function addRecommendation() {
+            const recommendationText = document.getElementById('recommendation_text').value;
+            if (recommendationText.trim() !== "") {
+                const newRecommendation = document.createElement('div');
+                newRecommendation.classList.add('recommendation');
+                newRecommendation.innerHTML = `<p>"${recommendationText}"</p><p>- Anônimo</p>`;
+                document.getElementById('recommendationsList').appendChild(newRecommendation);
+                document.getElementById('recommendation_text').value = ''; // Limpa o campo após o envio
+            }
+        }
+    </script>
 </body>
 </html>
