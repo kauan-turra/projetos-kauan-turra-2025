@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portfólio - Kauan Turra</title>
   <style>
     body {
@@ -63,18 +63,6 @@
 
     .topmenu nav {
       display: flex;
-    }
-
-    .topmenu.active nav {
-      display: block;
-      position: absolute;
-      top: 100%;
-      right: 10px;
-      background-color: #4c84af;
-      width: 150px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      border-radius: 5px;
-      z-index: 999;
     }
 
     section {
@@ -239,30 +227,37 @@
       color: #333;
     }
 
+    /* MENU RESPONSIVO */
     @media (max-width: 768px) {
       .topmenu nav {
         display: none;
         flex-direction: column;
         width: 100%;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: #4c84af;
+        padding: 10px 0;
+        border-radius: 0 0 5px 5px;
+        z-index: 1000;
+      }
+
+      .topmenu.active nav {
+        display: flex;
+      }
+
+      .topmenu nav a {
+        padding: 12px 20px;
+        text-align: left;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
       .menu-icon {
         display: flex;
       }
 
-      .topmenu.active nav a {
-        display: block;
-        text-align: left;
-        padding: 12px 20px;
-        font-size: 16px;
-        background-color: #4c84af;
-        color: white;
-        text-decoration: none;
-      }
-
       #about {
         flex-direction: column;
-        text-align: center;
       }
 
       .profile-img {
@@ -270,12 +265,7 @@
         height: 120px;
       }
 
-      .skill {
-        width: 100%;
-        margin: 10px 0;
-      }
-
-      .project-card {
+      .skill, .project-card {
         width: 100%;
         margin: 10px 0;
       }
